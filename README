@@ -1,0 +1,23 @@
+parallel list 提供一个Go高并发的int有序链表。
+
+链表有如下特性：
+    1、链表有序、无重复元素。
+    2、链表将写操作限制在某个区域，区域内一写多读，全局并发读写。
+    3、链表读操作完全无锁。
+
+
+链表提供以下接口
+    // 检查一个元素是否存在，如果存在则返回 true，否则返回 false
+    Contains(value int) bool
+
+    // 插入一个元素，如果此操作成功插入一个元素，则返回 true，否则返回 false
+    Insert(value int) bool
+
+    // 删除一个元素，如果此操作成功删除一个元素，则返回 true，否则返回 false
+    Delete(value int) bool
+
+    // 遍历此有序链表的所有元素，如果 f 返回 false，则停止遍历
+    Range(f func(value int) bool)
+
+    // 返回有序链表的元素个数
+    Len() int
